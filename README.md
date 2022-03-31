@@ -332,15 +332,15 @@ es porque pusiste *node test* en lugar de *npm test*
       docker-compose -f docker-compose-api.yml -p repo up
 
 
-
-## Probar lo hecho
-
 - En otra terminal
  
       cd SMAUEC
       pushd api_events; npm install; popd
       pushd api_rules;  npm install; popd
       pushd api_users;  npm install
+
+## Probar lo hecho
+
       npm test
 
 Esperamos que la mayor parte de los tests si no todos, pasen.

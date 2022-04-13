@@ -57,6 +57,13 @@ Puede ser útil o necesario instalar las guest additions en el caso de usar Virt
       # paciencia...
       sudo reboot
  
+#### Espacio libre
+
+Por algún motivo que ignoro, la instalación no usa todo el espacio disponible, se corrige con:
+
+      $ sudo lvextend -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv
+      $ sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
+
 
 ## Instalaciones y configuraciones adicionales
 

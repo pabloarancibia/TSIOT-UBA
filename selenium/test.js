@@ -2,7 +2,7 @@ const {Builder, By, until, Key, Capabilities} = require('selenium-webdriver');
 const {expect} = require('chai');
 var firefox = require('selenium-webdriver/firefox');
 //var profilePath = '/home/pablo/tsiot/.mozilla/firefox/zoa6kvyg.default';
-var profilePath = '/home/.mozilla/firefox/tzqxprvd.default-release';
+var profilePath = '/home/pablo/.mozilla/firefox/tzqxprvd.default-release';
 let TIMEOUT=20000;
 
 describe('test multi site with firefox', function() {
@@ -59,7 +59,7 @@ describe('test multi site with firefox', function() {
    });
 
    it('check that sitio2 only posts to form sensor without loading it', async function() {
-      this.timeout(12000);
+      this.timeout(20000);
       await driver.get('https://sensor/reset');
       await driver.get('https://sitio2/');
       driver.findElement(By.id('canary')).then(element=>{
@@ -67,8 +67,10 @@ describe('test multi site with firefox', function() {
       });
    });
 
-   after( () =>
+   after( () => {
+      this.timeout(TIMEOUT);
       driver && driver.quit()
+    }
    );
 });
 

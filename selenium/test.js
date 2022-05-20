@@ -67,6 +67,21 @@ describe('test multi site with firefox', function() {
       });
    });
 
+	it('check that the endpoint mult multiplies a by b', async function() {
+	  this.timeout(TIMEOUT);
+	  await driver.get('https://sensor/multiplicar.html');
+	   
+	  await driver.findElement(By.id('a')).sendKeys(7);
+	  await driver.findElement(By.id('b')).sendKeys(8);
+	   
+	  await driver.findElement(By.id('send')).then(element => element.click());
+	   
+	  var element = await driver.wait(until.elementLocated(By.id('result')), TIMEOUT);
+	  var value = await element.getText();
+	   
+	  expect(value).to.equal('El resultado de multiplicar 7 por 8 debe ser 56');
+   });
+
    after( () => {
       this.timeout(TIMEOUT);
       driver && driver.quit()
